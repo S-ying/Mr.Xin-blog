@@ -16,7 +16,7 @@
     </parent>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
+        <java.version>1.7</java.version>
         <thymeleaf.version> 3.0.2.RELEASE </thymeleaf.version>
         <thymeleaf-layout-dialect.version> 2.1.1 </thymeleaf-layout-dialect.version>
         <tomcat.version>7.0.69</tomcat.version>
@@ -117,11 +117,18 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
-        <!-- 上传图片 -->
+        <!-- 七牛云对象存储上传图片 -->
         <dependency>
             <groupId>com.qiniu</groupId>
             <artifactId>qiniu-java-sdk</artifactId>
             <version>[7.2.0, 7.2.99]</version>
+        </dependency>
+
+        <!--腾讯云对象存储上传图片-->
+        <dependency>
+            <groupId>com.qcloud</groupId>
+            <artifactId>cos_api</artifactId>
+            <version>5.2.4</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
@@ -145,6 +152,15 @@
                     <fork>true</fork>
                 </configuration>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<compilerVersion>1.8</compilerVersion>-->
+                    <!--<source>1.8</source>-->
+                    <!--<target>1.8</target>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
         <finalName>eumji-blog</finalName>
     </build>

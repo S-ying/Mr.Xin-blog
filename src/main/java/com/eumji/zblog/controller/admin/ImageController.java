@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.eumji.zblog.service.UserService;
 import com.eumji.zblog.util.ImageCutUtil;
 import com.eumji.zblog.util.PhotoUploadUtil;
+import com.eumji.zblog.util.QcloudUploadUtil;
 import com.eumji.zblog.vo.PhotoResult;
 import com.eumji.zblog.vo.User;
 import org.slf4j.Logger;
@@ -35,6 +36,9 @@ public class ImageController {
     @Resource
     private PhotoUploadUtil photoUploadUtil;
 
+    @Resource
+    private QcloudUploadUtil qcloudUploadUtil;
+
     @RequestMapping("/imageUpload")
     public PhotoResult imageUpload(@RequestParam(value = "editormd-image-file",required = true) MultipartFile file){
         PhotoResult result = null;
@@ -43,8 +47,8 @@ public class ImageController {
         try {
             File files = new File(System.getProperty("java.io.tmpdir") + System.getProperty("file.separator")+file.getOriginalFilename());
             file.transferTo(files);
-
-            result = photoUploadUtil.uploadPhoto(files.getAbsolutePath(), file.getOriginalFilename());
+//            result = photoUploadUtil.uploadPhoto(files.getAbsolutePath(), file.getOriginalFilename());
+            result = qcloudUploadUtil.UploadFileFromLocal(files.getAbsolutePath(), file.getOriginalFilename());
             return result;
         } catch (IOException e) {
            logger.error(e.getMessage());
@@ -77,7 +81,8 @@ public class ImageController {
             ImageCutUtil.cut(inputStream, files, (int) object.getFloatValue("x"), (int) object.getFloatValue("y"), (int) object.getFloatValue("width"), (int) object.getFloatValue("height"));
             inputStream.close();
             //上传图片
-            result = photoUploadUtil.uploadPhoto(files.getAbsolutePath(), file.getOriginalFilename());
+//            result = photoUploadUtil.uploadPhoto(files.getAbsolutePath(), file.getOriginalFilename());
+            result = qcloudUploadUtil.UploadFileFromLocal(files.getAbsolutePath(), file.getOriginalFilename());
             User user = (User) request.getSession().getAttribute("user");
             userService.updateAvatar(result.getUrl(),user.getUsername());
             result.setMessage("修改图像成功！！！");

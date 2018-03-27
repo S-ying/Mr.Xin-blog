@@ -4,6 +4,7 @@ import com.eumji.zblog.service.ArticleService;
 import com.eumji.zblog.service.CategoryService;
 import com.eumji.zblog.service.TagService;
 import com.eumji.zblog.service.UserService;
+import com.eumji.zblog.util.QcloudUploadUtil;
 import com.eumji.zblog.util.ResultInfo;
 import com.eumji.zblog.util.ResultInfoFactory;
 import com.eumji.zblog.vo.*;
@@ -13,9 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.File;
+import java.io.IOException;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
@@ -47,6 +52,9 @@ public class AdminArticleController {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private QcloudUploadUtil qcloudUploadUtil;
     /**
      * 初始化文章分页信息
      * @param pager
@@ -222,5 +230,23 @@ public class AdminArticleController {
         return ResultInfoFactory.getSuccessResultInfo();
     }
 
+    @RequestMapping("/imageUpload")
+    @ResponseBody
+    public PhotoResult imageUpload(@RequestParam(value = "editormd-image-file",required = true) MultipartFile file){
+        PhotoResult result = null;
+        //设置filename
+        // String filename = new Random().nextInt(10000)+file.getOriginalFilename();
+        try {
+            File files = new File(System.getProperty("java.io.tmpdir") + System.getProperty("file.separator")+file.getOriginalFilename());
+            file.transferTo(files);
+
+            result = qcloudUploadUtil.UploadFileFromLocal(files.getAbsolutePath(), file.getOriginalFilename());
+            return result;
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+        return null;
+    }
 
 }
