@@ -187,7 +187,8 @@
 
                     // post-submit callback
                     function showResponse(responseText, statusText, xhr, $form)  {
-
+                        debugger;
+                        console.log(responseText);
                         if (responseText.success === 1)
                         {
                             dialog.find("[data-url]").val(responseText.url);

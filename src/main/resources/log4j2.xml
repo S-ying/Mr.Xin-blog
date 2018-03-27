@@ -6,9 +6,9 @@
     </properties>
 
     <appenders>
-        <Console name="Console" target="system_out">
-            <PatternLayout pattern="${PATTERN}" />
-        </Console>
+        <console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
+        </console>
     </appenders>
     <!--配置mybatis日志-->
     <loggers>
