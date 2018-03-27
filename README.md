@@ -85,10 +85,6 @@ baidu:
 ```
 
 
-## 修改记录
-修改记录请参见 [修改记录](https://github.com/eumji025/EumJi-blog/tree/dev/update-record.md)
-
-
 
 ## License
 
