@@ -10,6 +10,14 @@ baidu:
   task:
     postUrl:
     baseUrl:
+## 腾讯云对象存储key
+qcloud:
+  APPID: 1253685092
+  SecretId: AKIDBVerwpAPBm196tg9Y3RgszyngaYdALYg
+  SecretKey: AAyUJ2Zu54ugIiy2oTUNAECyc8Ti2CAx
+  Region: ap-chengdu
+#  BaseUrl: http://zblog-1253685092.cosgz.myqcloud.com/
+  BaseUrl: http://zblog-2-1253685092.cos.ap-chengdu.myqcloud.com/
 
 #数据库连接配置
 spring:
@@ -40,6 +48,8 @@ mybatis:
   config-location: classpath:mybatis-conf.xml
 #加载log4j2
 logging:
+  pattern:
+    console: "%d - %msg%n"
   config: classpath:log4j2.xml
   level: debug
   file:
