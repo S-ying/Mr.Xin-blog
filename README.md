@@ -61,17 +61,19 @@
 
 2.如果运行有问题，请先检查查看一下错误的原因，一般来说是不会有大问题。
 
-3.请自己配置百度推送的相关信息和骑牛云上传图片的相关配置(因为推送给我太多无用的链接了!!!)
+3.请自己配置百度推送的相关信息和腾讯云上传图片的相关配置(因为推送给我太多无用的链接了!!!)
 百度站长工具: http://ziyuan.baidu.com/dashboard/index <br>
-七牛云: https://portal.qiniu.com/
+腾讯云: https://cloud.tencent.com/product/cos
 
 ```yml
-##七牛云的key
-qiniu:
-  accessKey:
-  secretKey:
-  bucketName:
-  basePath:
+
+## 腾讯云对象存储key
+qcloud:
+  APPID: 1253685092
+  SecretId: AKIDBVerwpAPBm196tg9Y3RgszyngaYdALYg
+  SecretKey: AAyUJ2Zu54ugIiy2oTUNAECyc8Ti2CAx
+  Region: ap-chengdu
+  BaseUrl: http://zblog-2-1253685092.cos.ap-chengdu.myqcloud.com/
 
 ## 百度推送
 baidu:
@@ -82,19 +84,11 @@ baidu:
 
 ```
 
+
 ## 修改记录
 修改记录请参见 [修改记录](https://github.com/eumji025/EumJi-blog/tree/dev/update-record.md)
 
-## 声明
-由于近期的一系列侵权抄袭事件,本项目使用了开源的hexo主题[hexo-theme-icarus](https://github.com/ppoffice/hexo-theme-icarus)并加以改造. 也发邮件请教了[程序猿DD-翟永超](https://github.com/dyc87112).
-后端的模板来源于开源项目,本项目的开源协议若有不当的地方,请告知!
 
-另外最近发现某些开源项目,植入挖矿代码,十分鄙视!!!
-本项目不存在任何植入行为,除非是我自己被某些开源的组件欺骗了. 
-另外也将之前自己做的baidu推送和google推送全部注释掉(需要的请自行配置,千万不要用我默认的!!!)
-
-
-**净化开源环境人人有责!!!!**
 
 ## License
 
