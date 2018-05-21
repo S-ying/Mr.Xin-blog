@@ -1,4 +1,4 @@
-# eumji-blog
+# Mr.Xin-blog
   
  [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
@@ -61,8 +61,7 @@
 
 2.如果运行有问题，请先检查查看一下错误的原因，一般来说是不会有大问题。
 
-3.请自己配置百度推送的相关信息和腾讯云上传图片的相关配置(因为推送给我太多无用的链接了!!!)
-百度站长工具: http://ziyuan.baidu.com/dashboard/index <br>
+3.请自己配置腾讯云上传图片的相关配置
 腾讯云: https://cloud.tencent.com/product/cos
 
 ```yml
